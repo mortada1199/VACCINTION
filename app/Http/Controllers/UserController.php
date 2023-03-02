@@ -8,6 +8,7 @@ use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as HttpRequest;
 
 class UserController extends Controller
 {
@@ -59,9 +60,9 @@ class UserController extends Controller
     }
 
 
-    public function Get(Request $request)
+    public function Get()
     {
-        $user = $this->userService->getAllData($request);
+        $user = $this->userService->getAllData();
         if ($user != null) {
             return response()->json([
                 "statusCode" => "000", 'message' => ' successfully', 'data' => $user

@@ -44,7 +44,7 @@ class UserServices
         }
     }
 
-    public function getAllData($request)
+    public function getAllData()
     {
         $user  = User::all();
         return $user;
