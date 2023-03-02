@@ -31,4 +31,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::post('child/register', [ChildController::class, 'store']);
     Route::put('child/update/{id}', [ChildController::class, 'Update']);
+    Route::get('child/getallchlidren', [ChildController::class, 'Get']);
+
 

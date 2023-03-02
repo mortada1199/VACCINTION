@@ -13,24 +13,28 @@ class ChildServices
             'name' => $request->name,
             'date' => $request->date,
             'gender' => $request->gender,
-           
+
         ]);
         return $child;
     }
 
 
-public function updateChild($request,$id)
-{
+    public function updateChild($request, $id)
+    {
 
-    $child  = Child::where('id', $id)->first();
-    if($child != null){
-        $child->update([
-            'name' => $request->name?? $child->name,
-            'date' => $request->password?? $child->date,
-            'gender' => $request->email?? $child->emagenderil,
-        ]);
+        $child  = Child::where('id', $id)->first();
+        if ($child != null) {
+            $child->update([
+                'name' => $request->name ?? $child->name,
+                'date' => $request->password ?? $child->date,
+                'gender' => $request->email ?? $child->emagenderil,
+            ]);
+            return $child;
+        }
+    }
+    public function getAllData($request)
+    {
+        $child  = Child::all();
         return $child;
     }
-}
-    
 }
