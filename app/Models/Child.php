@@ -10,7 +10,7 @@ class Child extends Model
     use HasFactory;
 
 
-    protected $filable = [  'name' ,'date' , 'gender'];
+    protected $fillable = [  'name' ,'date' , 'gender'];
 
   
 }
