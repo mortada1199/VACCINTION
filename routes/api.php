@@ -20,9 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+//userr route 
 
     Route::post('auth/login', [UserController::class, 'Login']);
     Route::post('auth/register', [UserController::class, 'store']);
     Route::put('auth/update/{id}', [UserController::class, 'Update']);
+
+    // child route
+
+    Route::post('child/register', [UserController::class, 'store']);
+    Route::put('child/update/{id}', [UserController::class, 'Update']);
 
