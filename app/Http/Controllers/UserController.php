@@ -15,6 +15,7 @@ class UserController extends Controller
         {
             $this->userService = $userService;
         }
+        //this function use to crate user
         public function store(CreateUserRequest $request)
         {    
             $user = $this->userService->store($request);
