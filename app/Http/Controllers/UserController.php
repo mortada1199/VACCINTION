@@ -6,6 +6,7 @@ use App\Http\Services\User\UserServices;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\LoginRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -37,6 +38,17 @@ class UserController extends Controller
             }
             return response()->json([
         "statusCode" => "264", 'success' => false, 'message' => "User Dosn't Login " ], 200);
+        }
+
+        public function Update(UpdateUserRequest $request,$id)
+        {
+            $user = $this->userService->updateuser($request,$id);
+            if ($user != null) {
+                return response()->json([
+         "statusCode" => "000",'message' => 'Update successfully','data' => $user  ], 200);
+            }
+            return response()->json([
+        "statusCode" => "264", 'success' => false, 'message' => "User Dosn't Update " ], 200);
         }
     
 }
