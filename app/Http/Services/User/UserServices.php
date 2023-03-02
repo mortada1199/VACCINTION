@@ -19,7 +19,7 @@ class UserServices
         return $user;
     }
 
-    public function login( $request)
+    public function login($request)
     {
         $user = User::where('email', $request->email)->Where('password', $request->password)->first();
         if ($user == null) {
@@ -28,20 +28,25 @@ class UserServices
         return $user;
     }
 
-public function updateuser($request,$id)
-{
+    public function updateuser($request, $id)
+    {
 
-    $user  = User::where('id', $id)->first();
-    if($user != null){
-        $user->update([
-            'name' => $request->name?? $user->name,
-            'password' => $request->password?? $user->password,
-            'email' => $request->email?? $user->email,
-            'phone' => $request->phone?? $user->phone,
-            'date' => $request->date?? $user->date
-        ]);
+        $user  = User::where('id', $id)->first();
+        if ($user != null) {
+            $user->update([
+                'name' => $request->name ?? $user->name,
+                'password' => $request->password ?? $user->password,
+                'email' => $request->email ?? $user->email,
+                'phone' => $request->phone ?? $user->phone,
+                'date' => $request->date ?? $user->date
+            ]);
+            return $user;
+        }
+    }
+
+    public function getAllData($request)
+    {
+        $user  = User::all();
         return $user;
     }
-}
-    
 }
