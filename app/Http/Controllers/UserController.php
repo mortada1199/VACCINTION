@@ -68,7 +68,7 @@ class UserController extends Controller
             ], 200);
         }
         return response()->json([
-            "statusCode" => "264", 'success' => false, 'message' => "User Dosn't Update "
+            "statusCode" => "264", 'success' => false, 'message' => "User Not Found "
         ], 200);
     }
 }
