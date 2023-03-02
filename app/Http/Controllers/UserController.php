@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\User\UserServices;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategroyRequests\Categroy\CreateUserRequest;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\LoginRequest;
 
 class UserController extends Controller
 {
@@ -25,6 +26,17 @@ class UserController extends Controller
             }
             return response()->json([
         "statusCode" => "264", 'success' => false, 'message' => "User Dosn't belong to any profile " ], 200);
+        }
+
+        public function Login(LoginRequest $request)
+        {
+            $user = $this->userService->login($request);
+            if ($user) {
+                return response()->json([
+         "statusCode" => "000",'message' => 'Login successfully','data' => $user  ], 200);
+            }
+            return response()->json([
+        "statusCode" => "264", 'success' => false, 'message' => "User Dosn't Login " ], 200);
         }
     
 }
